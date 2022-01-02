@@ -1,5 +1,16 @@
 function findShortestStringRecursive(arr) {
   // type your code here
+  let shortest = arr[0]
+  if(arr.length===1){
+    return shortest
+  }else{
+    if(arr[1].length < shortest.length){
+      shortest = arr[1]
+    }
+    temp = arr.slice(2)
+    temp.unshift(shortest)
+    return findShortestStringRecursive(temp)
+  }
 }
 
 if (require.main === module) {
@@ -16,6 +27,11 @@ if (require.main === module) {
 
   console.log("Expecting: 'lily'");
   console.log("=>", findShortestStringRecursive(['flower', 'juniper', 'lily', 'dandelion']));
+
+  console.log("");
+
+  console.log("Expecting: ''");
+  console.log("=>", findShortestStringRecursive(['flower', '', 'lily', 'dandelion']));
 }
 
 module.exports = findShortestStringRecursive;
